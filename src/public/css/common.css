@@ -1,0 +1,142 @@
+/* base */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scrollbar-gutter: stable;
+}
+
+body {
+    margin: 0;
+    font-family: Inter;
+    color: #000;
+    letter-spacing: 0.1em;
+}
+
+h1 {
+    letter-spacing: normal;
+}
+
+.main--auth {
+    background-color: #fff;
+}
+
+.main--app {
+    background-color: #f0eff2;
+}
+
+.main--report {
+    background-color: #fff;
+}
+
+/* utility */
+
+.link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* header */
+
+.header {
+    background-color: #000;
+}
+
+.header__inner {
+    max-width: 1512px;
+    margin: 0 auto;
+    height: 80px;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+}
+
+.header__logo-image {
+    display: block;
+    height: 35px;
+}
+
+/* header nav */
+
+.header-nav__list {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.header-nav__item {
+    display: flex;
+    align-items: center;
+}
+
+.header-nav a,
+.header-nav button {
+    display: inline-block;
+    padding: 0;
+    font: inherit;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: normal;
+    color: #fff;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.header-nav button:hover,
+.header-nav a:hover {
+    opacity: 0.8;
+}
+
+/* PC (1400px - 1540px) のレイアウト調整 */
+@media screen and (min-width: 1400px) and (max-width: 1540px) {
+    .header__inner {
+        /* 画面幅に合わせて左右の余白を自動調整し、はみ出しを防ぐ */
+        max-width: 100%;
+        padding: 0 30px;
+    }
+
+    .header-nav__list {
+        /* 要素間の隙間を少し狭めてナビゲーションの折り返しを防ぐ */
+        gap: 35px;
+    }
+}
+
+/* スマホ (768px以下) のレイアウト調整 */
+@media screen and (max-width: 768px) {
+    .header__inner {
+        height: 60px;
+        /* ヘッダーの高さを少し低くする */
+        padding: 0 15px;
+        /* 左右の余白を狭くする */
+    }
+
+    .header__logo-image {
+        height: 25px;
+        /* ロゴを一回り小さくする */
+    }
+
+    /* ナビゲーションを横並びから縦並び（または非表示）に変えるベース */
+    .header-nav__list {
+        gap: 15px;
+        /* メニュー間の隙間を狭くする */
+    }
+
+    .header-nav a,
+    .header-nav button {
+        font-size: 14px;
+        /* 文字サイズをスマホ向けに小さくする */
+    }
+}

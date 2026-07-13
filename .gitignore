@@ -1,0 +1,8 @@
+.DS_Store
+.env
+.env.backup
+.env.testing
+.phpunit.result.cache
+docker/mysql/data
+node_modules
+vendor

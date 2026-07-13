@@ -1,0 +1,144 @@
+.report {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 0px 80px;
+    background-color: #fff;
+}
+
+.report__title {
+    margin-bottom: 16px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.report__description {
+    margin-bottom: 48px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.report-heading {
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* 基本サマリー */
+
+.report-summary {
+    margin-bottom: 64px;
+}
+
+.report-summary__cards {
+    display: flex;
+    gap: 24px;
+}
+
+.report-card {
+    flex: 1;
+    padding: 18px 20px;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    background: #f0eff2;
+}
+
+.report-card__label {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #666666;
+}
+
+.report-card__value {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* 月次推移 */
+
+.report-monthly {
+    margin-bottom: 64px;
+}
+
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.report-table__header,
+.report-table__cell {
+    padding: 20px 12px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.report-table__header-row,
+.report-table__row {
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.report-table__header {
+    text-align: left;
+    font-size: 22px;
+}
+
+.report-table__header--center {
+    text-align: center;
+    font-size: 22px;
+}
+
+.report-table__header--right {
+    text-align: right;
+    font-size: 22px;
+}
+
+.report-table__cell {
+    text-align: left;
+}
+
+.report-table__cell--center {
+    text-align: center;
+}
+
+.report-table__cell--right {
+    text-align: right;
+}
+
+/* 異常検知 */
+
+.report-alert__description {
+    margin-bottom: 24px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #666666;
+}
+
+.report-alert__cards {
+    display: flex;
+    gap: 24px;
+}
+
+/* レスポンシブ */
+
+@media screen and (max-width: 850px) {
+
+    .report-summary__cards,
+    .report-alert__cards {
+        flex-direction: column;
+    }
+
+    .report-card__value {
+        font-size: 40px;
+    }
+
+    .report__title {
+        font-size: 30px;
+    }
+
+    .report-heading {
+        font-size: 28px;
+    }
+
+}

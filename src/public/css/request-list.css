@@ -1,0 +1,116 @@
+.request-list {
+    background: #f1f1f1;
+    min-height: calc(100vh - 80px);
+    padding: 78px 20px;
+}
+
+.request-list__inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.request-list__title {
+    margin: 0 0 65px;
+    padding-left: 20px;
+    border-left: 8px solid #000;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.request-list-tabs {
+    margin-bottom: 45px;
+}
+
+.request-list-tabs__header {
+    display: flex;
+    gap: 80px;
+    padding: 0 60px 17px;
+    border-bottom: 1px solid #000;
+}
+
+.request-list-tabs__link {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+}
+
+.request-list-tabs__link--active {
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.request-table {
+    overflow: hidden;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.request-table__table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.request-table__row {
+    height: 50px;
+}
+
+.request-table__head .request-table__row {
+    border-bottom: 3px solid #e1e1e1;
+}
+
+.request-table__body .request-table__row {
+    border-bottom: 2px solid #e1e1e1;
+}
+
+.request-table__body .request-table__row:last-child {
+    border-bottom: none;
+}
+
+.request-table__header {
+    font-size: 16px;
+    font-weight: 700;
+    color: #737373;
+    text-align: center;
+}
+
+.request-table__cell {
+    font-size: 16px;
+    font-weight: 700;
+    color: #737373;
+    text-align: center;
+}
+
+.request-table__header--status {
+    width: 16%;
+}
+
+.request-table__header--name {
+    width: 14%;
+}
+
+.request-table__header--date {
+    width: 18%;
+}
+
+.request-table__header--reason {
+    width: 16%;
+}
+
+.request-table__header--request-date {
+    width: 18%;
+}
+
+.request-table__header--detail {
+    width: 18%;
+}
+
+.request-table__detail-link {
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.request-table__detail-link:hover {
+    opacity: 0.7;
+}

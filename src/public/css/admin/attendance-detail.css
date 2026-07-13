@@ -1,0 +1,127 @@
+.attendance-detail {
+    min-height: calc(100vh - 80px);
+    background: #f1f1f1;
+    padding: 93px 20px;
+}
+
+.attendance-detail__inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.attendance-detail__title {
+    font-size: 30px;
+    font-weight: 700;
+    padding-left: 20px;
+    border-left: 8px solid #000;
+    margin: 0 0 55px;
+}
+
+.attendance-detail__form {
+    width: 100%;
+}
+
+.attendance-detail-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.attendance-detail-card__row {
+    display: flex;
+    align-items: center;
+    min-height: 94px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.attendance-detail-card__row:last-child {
+    border-bottom: none;
+}
+
+.attendance-detail-card__label {
+    width: 300px;
+    padding-left: 64px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 700;
+    color: #737373;
+}
+
+.attendance-detail-card__content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.attendance-detail-card__content--date {
+    gap: 150px;
+}
+
+.attendance-detail-card__content--time {
+    gap: 45px;
+}
+
+.attendance-detail-card__text {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.attendance-detail-card__input-time {
+    width: 103px;
+    height: 29px;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.attendance-detail-card__separator {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.attendance-detail-card__textarea {
+    width: 316px;
+    height: 72px;
+    padding: 12px;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    resize: none;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 14px 0 20px;
+}
+
+.attendance-detail__button-area {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 56px;
+}
+
+.attendance-detail__button {
+    width: 130px;
+    height: 50px;
+    border: none;
+    border-radius: 6px;
+    background: #000;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+}
+
+.attendance-detail__error {
+    margin: 8px 0 0;
+    color: #ff0000;
+    font-size: 14px;
+}
+
+.attendance-detail__pending-message {
+    margin: 5px 0 0;
+    color: rgba(255, 0, 0, 0.5);
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+}
