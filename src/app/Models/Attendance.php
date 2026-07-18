@@ -43,7 +43,7 @@ class Attendance extends Model
     public function latestBreak()
     {
         return $this->breaks()
-            ->latest('break_start')
+            ->latest('id')
             ->first();
     }
 

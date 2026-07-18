@@ -1,5 +1,4 @@
 .request-list {
-    min-height: calc(100vh - 80px);
     background: #f1f1f5;
     padding: 78px 20px;
 }

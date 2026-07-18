@@ -1,7 +1,7 @@
 .attendance-list {
     max-width: 900px;
     margin: 0 auto;
-    padding: 91px 0 80px;
+    padding: 91px 0;
 }
 
 .attendance-list__title {
@@ -33,8 +33,16 @@
 }
 
 .attendance-list__current-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-weight: bold;
     font-size: 20px;
+}
+
+.calendar-icon {
+    width: 1.2em;
+    height: auto;
 }
 
 .attendance-list__arrow--left {
@@ -109,5 +117,5 @@
 .attendance-table__detail-link {
     text-decoration: none;
     color: #000;
-    font-weight: bold;
+    font-weight: 700;
 }

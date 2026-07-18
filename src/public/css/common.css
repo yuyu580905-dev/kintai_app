@@ -13,6 +13,9 @@ body {
     font-family: Inter;
     color: #000;
     letter-spacing: 0.1em;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {
@@ -21,14 +24,17 @@ h1 {
 
 .main--auth {
     background-color: #fff;
+    flex: 1;
 }
 
 .main--app {
     background-color: #f0eff2;
+    flex: 1;
 }
 
 .main--report {
     background-color: #fff;
+    flex: 1;
 }
 
 /* utility */

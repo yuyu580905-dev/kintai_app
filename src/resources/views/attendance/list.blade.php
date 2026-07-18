@@ -24,8 +24,11 @@
             </a>
 
             <div class="attendance-list__current-date">
-                📅 {{ $currentMonth->format('Y/m') }}
+                <img src="{{ asset('images/calendar.png') }}" alt="カレンダー" class="calendar-icon">
+                {{ $currentMonth->format('Y/m') }}
             </div>
+
+
 
             <a href="{{ route('attendance.list', ['month' => $currentMonth->copy()->addMonth()->format('Y-m')]) }}"
                 class="attendance-list__date-link">
@@ -55,7 +58,7 @@
                 @foreach ($days as $day)
 
                     @php
-                        $attendance = $attendances[$day->format('Y-m-d')] ?? null;
+    $attendance = $attendances[$day->format('Y-m-d')] ?? null;
                     @endphp
 
                     <tr class="attendance-table__row">

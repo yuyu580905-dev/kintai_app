@@ -25,7 +25,8 @@
             </a>
 
             <div class="attendance-list__current-date">
-                📅 {{ $currentDate->format('Y/m/d') }}
+                <img src="{{ asset('images/calendar.png') }}" alt="カレンダー" class="calendar-icon">
+                {{ $currentDate->format('Y/m/d') }}
             </div>
 
             <a href="{{ route('admin.attendance.list', [

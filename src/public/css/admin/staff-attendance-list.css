@@ -1,5 +1,4 @@
 .staff-attendance-list {
-    min-height: calc(100vh - 80px);
     background: #f1f1f5;
     padding: 91px 20px;
 }
@@ -38,8 +37,16 @@
 }
 
 .staff-attendance-list__current-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-weight: bold;
     font-size: 20px;
+}
+
+.calendar-icon {
+    width: 1.2em;
+    height: auto;
 }
 
 .staff-attendance-list__arrow--left {

@@ -33,8 +33,16 @@
 }
 
 .attendance-list__current-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-weight: bold;
     font-size: 20px;
+}
+
+.calendar-icon {
+    width: 1.2em;
+    height: auto;
 }
 
 .attendance-list__arrow--left {
@@ -58,20 +66,23 @@
     overflow: hidden;
 }
 
-.attendance-table__header,
-.attendance-table__cell {
+.attendance-table__header {
     height: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #737373;
     text-align: center;
     padding: 10px 0;
-    color: #737373;
-    font-weight: bold;
-}
-
-.attendance-table__header {
     border-bottom: 3px solid #e1e1e1;
 }
 
 .attendance-table__cell {
+    height: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #737373;
+    text-align: center;
+    padding: 10px 0;
     border-bottom: 2px solid #e1e1e1;
 }
 
@@ -106,5 +117,5 @@
 .attendance-table__detail-link {
     text-decoration: none;
     color: #000;
-    font-weight: bold;
+    font-weight: 700;
 }

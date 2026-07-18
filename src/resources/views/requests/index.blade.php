@@ -100,7 +100,7 @@
 
                                 <td class="request-table__cell">
 
-                                    <a href="{{ route('attendance.detail', $request->attendance_id) }}"
+                                    <a href="{{ route('attendance.detail', $request->attendance) }}"
                                         class="request-table__detail-link">
                                         詳細
                                     </a>

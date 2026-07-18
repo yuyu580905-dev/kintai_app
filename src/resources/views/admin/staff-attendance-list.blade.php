@@ -27,7 +27,8 @@
                     </a>
 
                     <div class="staff-attendance-list__current-date">
-                        📅 {{ $month->format('Y/m') }}
+                        <img src="{{ asset('images/calendar.png') }}" alt="カレンダー" class="calendar-icon">
+                        {{ $month->format('Y/m') }}
                     </div>
 
                     <a href="{{ route('admin.attendance.staff', ['user' => $user, 'month' => $month->copy()->addMonth()->format('Y-m')]) }}"
