@@ -21,8 +21,6 @@ class AttendanceBreak extends Model
         'break_end' => 'datetime',
     ];
 
-    protected $table = 'breaks';
-
     public function attendance()
     {
         return $this->belongsTo(Attendance::class);

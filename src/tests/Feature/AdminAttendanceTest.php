@@ -648,7 +648,7 @@ class AdminAttendanceTest extends TestCase
         $this->assertEquals('09:30', $attendance->clock_in->format('H:i'));
         $this->assertEquals('18:30', $attendance->clock_out->format('H:i'));
 
-        $this->assertDatabaseHas('breaks', [
+        $this->assertDatabaseHas('attendance_breaks', [
             'attendance_id' => $attendance->id,
             'break_start' => '2026-07-16 12:30:00',
             'break_end' => '2026-07-16 13:30:00',

@@ -21,12 +21,12 @@ class CreateNewUser implements CreatesNewUsers
     {
         //新規登録時にRegisterRequestは用いられないため、こちらでバリデーションを設定する必要あり
         $rules = [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:20'],
             'email' => [
                 'required',
                 'string',
                 'email',
-                'max:255',
+                'max:20',
                 Rule::unique(User::class),
             ],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -34,7 +34,7 @@ class CreateNewUser implements CreatesNewUsers
         $messages = [
             'name.required' => 'お名前を入力してください',
             'name.string' => 'お名前は文字で入力してください',
-            'name.max' => 'お名前は255字以下で入力してください',
+            'name.max' => 'お名前は20字以下で入力してください',
             'email.required' => 'メールアドレスを入力してください',
             'email.string' => 'メールアドレスは文字で入力してください',
             'email.email' => 'メールアドレスはメール形式で入力してください',
