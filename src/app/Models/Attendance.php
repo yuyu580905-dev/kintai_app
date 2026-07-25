@@ -118,7 +118,7 @@ class Attendance extends Model
         $minutes = $this->breakMinutes();
 
         return sprintf(
-            '%d:%02d',
+            '%02d:%02d',
             floor($minutes / 60),
             $minutes % 60
         );
@@ -133,7 +133,7 @@ class Attendance extends Model
         }
 
         return sprintf(
-            '%d:%02d',
+            '%02d:%02d',
             floor($minutes / 60),
             $minutes % 60
         );

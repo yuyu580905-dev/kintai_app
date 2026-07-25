@@ -4,12 +4,9 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Attendance;
 use App\Models\AttendanceBreak;
-use App\Models\AttendanceRequest;
-use App\Models\AttendanceRequestBreak;
 
 class AttendanceReportTest extends TestCase
 {

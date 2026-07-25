@@ -185,7 +185,7 @@ php artisan test
 ## 使用技術（実行環境）
 
 - PHP8.1
-- Laravel8.75
+- Laravel8.83.29
 - MySQL8.0
 - Nginx
 - Docker
