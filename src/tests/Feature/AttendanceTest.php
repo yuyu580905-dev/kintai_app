@@ -12,14 +12,13 @@ use App\Models\AttendanceRequest;
 
 class AttendanceTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * A basic feature test example.
      *
      * @return void
      */
-
-    use RefreshDatabase;
-
     // 勤怠打刻画面で現在の日時情報がUIと同じ形式で出力されていることを確認するテスト
     public function test_current_date_and_time_are_displayed(): void
     {

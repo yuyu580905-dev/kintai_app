@@ -8,14 +8,13 @@ use App\Models\User;
 
 class LoginTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * A basic feature test example.
      *
      * @return void
      */
-
-    use RefreshDatabase;
-
     // メールアドレスが未入力の場合バリデーションメッセージが表示されるテスト
     public function test_email_is_required(): void
     {

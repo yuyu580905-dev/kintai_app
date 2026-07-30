@@ -45,7 +45,7 @@ class AttendanceSeeder extends Seeder
 
             $this->createAttendancesByPatterns(
                 $user,
-                now()->copy()->subMonths($month)->startOfMonth(),
+                now()->copy()->startOfMonth()->subMonths($month),
                 $patterns
             );
         }
@@ -62,7 +62,7 @@ class AttendanceSeeder extends Seeder
 
             $this->createAttendancesByPatterns(
                 $user,
-                now()->copy()->subMonths($month)->startOfMonth(),
+                now()->copy()->startOfMonth()->subMonths($month),
                 $patterns
             );
         }
@@ -73,7 +73,7 @@ class AttendanceSeeder extends Seeder
         for ($i = 5; $i > 0; $i--) {
 
             // 対象月の1日
-            $date = now()->copy()->subMonths($i)->startOfMonth();
+            $date = now()->copy()->startOfMonth()->subMonths($i);
 
             // その月に作成した勤怠数
             $created = 0;

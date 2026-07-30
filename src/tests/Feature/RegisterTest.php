@@ -13,14 +13,13 @@ use Illuminate\Support\Facades\URL;
 
 class RegisterTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * A basic feature test example.
      *
      * @return void
      */
-
-    use RefreshDatabase;
-
     // 名前が未入力の場合バリデーションメッセージが表示されるテスト
     public function test_name_is_required(): void
     {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\IndexAttendanceRecordRequest;
 use App\Http\Requests\Api\V1\StoreAttendanceRecordRequest;
+use App\Http\Requests\Api\V1\UpdateAttendanceRecordRequest;
 use App\Http\Resources\AttendanceRecordResource;
 use App\Models\Attendance;
 use Carbon\Carbon;
@@ -80,5 +81,80 @@ class AttendanceRecordController extends Controller
         return (new AttendanceRecordResource($attendance))
             ->response()
             ->setStatusCode(201);
+    }
+
+    public function update(
+        UpdateAttendanceRecordRequest $request,
+        Attendance $attendanceRecord
+    ) {
+        $this->authorize('update', $attendanceRecord);
+
+        $validated = $request->validated();
+
+        // 更新後に使用する日付（未送信なら既存の日付）
+        $date = $validated['date']
+            ?? $attendanceRecord->work_date->format('Y-m-d');
+
+        $updateData = [];
+
+        // 勤務日
+        if (array_key_exists('date', $validated)) {
+            $updateData['work_date'] = $date;
+        }
+
+        // 備考
+        if (array_key_exists('comment', $validated)) {
+            $updateData['reason'] = $validated['comment'];
+        }
+
+        // 出勤時刻
+        if (array_key_exists('clock_in', $validated)) {
+            $updateData['clock_in'] = $date . ' ' . $validated['clock_in'];
+        }
+
+        // 退勤時刻
+        if (array_key_exists('clock_out', $validated)) {
+            $updateData['clock_out'] = $validated['clock_out']
+                ? $date . ' ' . $validated['clock_out']
+                : null;
+        }
+
+        // 日付だけ変更された場合は既存時刻の日付も合わせる
+        if (array_key_exists('date', $validated)) {
+
+            if (
+                ! array_key_exists('clock_in', $validated) &&
+                $attendanceRecord->clock_in
+            ) {
+                $updateData['clock_in'] =
+                    $date . ' ' . $attendanceRecord->clock_in->format('H:i:s');
+            }
+
+            if (
+                ! array_key_exists('clock_out', $validated) &&
+                $attendanceRecord->clock_out
+            ) {
+                $updateData['clock_out'] =
+                    $date . ' ' . $attendanceRecord->clock_out->format('H:i:s');
+            }
+        }
+
+        $attendanceRecord->update($updateData);
+
+        $attendanceRecord->load([
+            'user',
+            'breaks',
+        ]);
+
+        return new AttendanceRecordResource($attendanceRecord);
+    }
+
+    public function destroy(Attendance $attendanceRecord)
+    {
+        $this->authorize('delete', $attendanceRecord);
+
+        $attendanceRecord->delete();
+
+        return response()->noContent();
     }
 }

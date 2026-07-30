@@ -16,8 +16,8 @@ class AttendanceReportService
     public function generate(int $userId): array
     {
         $startDate = Carbon::now()
-            ->subMonths(5)
-            ->startOfMonth();
+            ->startOfMonth()
+            ->subMonths(5);
 
         $endDate = Carbon::now()
             ->endOfMonth();
@@ -79,6 +79,7 @@ class AttendanceReportService
             ->map(function ($i) {
 
                 return now()
+                    ->startOfMonth()
                     ->subMonths($i)
                     ->format('Y-m');
             });

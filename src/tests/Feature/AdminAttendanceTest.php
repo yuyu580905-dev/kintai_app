@@ -13,14 +13,13 @@ use App\Models\AttendanceRequestBreak;
 
 class AdminAttendanceTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * A basic feature test example.
      *
      * @return void
      */
-
-    use RefreshDatabase;
-
     // その日になされた全ユーザーの勤怠情報が確認できることを確認するテスト
     public function test_all_users_attendance_is_displayed(): void
     {

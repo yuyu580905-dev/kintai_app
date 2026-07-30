@@ -10,14 +10,13 @@ use App\Models\AttendanceBreak;
 
 class AttendanceReportTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * A basic feature test example.
      *
      * @return void
      */
-
-    use RefreshDatabase;
-
     // ゲストはレポートページにアクセスできないことを確認するテスト
     public function test_guest_cannot_access_attendance_report(): void
     {
@@ -66,7 +65,7 @@ class AttendanceReportTest extends TestCase
             ->actingAs($user)
             ->get(route('attendance.report'));
 
-        $response->assertOk();
+        $response->assertStatus(200);
 
         $response->assertViewHas('report', function ($report) use ($day1) {
 
@@ -96,7 +95,7 @@ class AttendanceReportTest extends TestCase
             ->actingAs($user)
             ->get(route('attendance.report'));
 
-        $response->assertOk();
+        $response->assertStatus(200);
 
         $response->assertViewHas('report', function ($report) {
 
