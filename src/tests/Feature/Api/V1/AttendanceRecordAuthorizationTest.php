@@ -5,7 +5,6 @@ namespace Tests\Feature\Api\V1;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\Attendance;
-use App\Models\AttendanceBreak;
 use App\Models\User;
 use Laravel\Sanctum\Sanctum;
 
@@ -111,7 +110,7 @@ class AttendanceRecordAuthorizationTest extends TestCase
         ]);
     }
 
-
+    // 認証済みユーザーは自分の勤怠を削除することができることを確認するテスト
     public function test_authenticated_user_can_delete_own_attendance_record()
     {
         $user = User::factory()->create();
@@ -140,7 +139,6 @@ class AttendanceRecordAuthorizationTest extends TestCase
     public function test_user_cannot_update_other_users_attendance_record()
     {
         $user = User::factory()->create();
-
         $otherUser = User::factory()->create();
 
         Sanctum::actingAs($user);
@@ -169,7 +167,6 @@ class AttendanceRecordAuthorizationTest extends TestCase
     public function test_user_cannot_delete_other_users_attendance_record()
     {
         $user = User::factory()->create();
-
         $otherUser = User::factory()->create();
 
         Sanctum::actingAs($user);
