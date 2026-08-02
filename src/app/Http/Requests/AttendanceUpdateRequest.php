@@ -33,7 +33,7 @@ class AttendanceUpdateRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'reason.required' => '備考を記入してください'

@@ -25,6 +25,7 @@
 .staff-table__table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 .staff-table__head {

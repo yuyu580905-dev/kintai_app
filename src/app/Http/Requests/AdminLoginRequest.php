@@ -29,7 +29,7 @@ class AdminLoginRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'email.required' => 'メールアドレスを入力してください',

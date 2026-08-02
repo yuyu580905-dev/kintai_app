@@ -36,12 +36,12 @@ class UpdateAttendanceRecordRequest extends FormRequest
                     }),
             ],
             'clock_in' => ['sometimes', 'required', 'date_format:H:i:s'],
-            'clock_out' => ['sometimes', 'nullable', 'date_format:H:i:s', 'after:clock_in'],
-            'comment' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'clock_out' => ['nullable', 'date_format:H:i:s', 'after:clock_in'],
+            'comment' => ['nullable', 'string', 'max:255'],
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'date.required' => '勤怠日は必須です。',

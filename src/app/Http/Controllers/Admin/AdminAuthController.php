@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AdminLoginRequest;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class AdminAuthController extends Controller

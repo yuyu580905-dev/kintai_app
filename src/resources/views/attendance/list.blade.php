@@ -58,7 +58,7 @@
                 @foreach ($days as $day)
 
                     @php
-    $attendance = $attendances[$day->format('Y-m-d')] ?? null;
+                        $attendance = $attendances[$day->format('Y-m-d')] ?? null;
                     @endphp
 
                     <tr class="attendance-table__row">

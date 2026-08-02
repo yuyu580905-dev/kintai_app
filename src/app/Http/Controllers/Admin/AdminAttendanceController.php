@@ -114,21 +114,20 @@ class AdminAttendanceController extends Controller
 
     public function staffAttendance(User $user)
     {
-        $month = request('month')
-            ? Carbon::parse(request('month'))
-            : now();
+        $month = request()->filled('month')
+            ? Carbon::createFromFormat('Y-m-d', request('month') . '-01')
+            : now()->startOfMonth();
 
         $start = $month->copy()->startOfMonth();
         $end = $month->copy()->endOfMonth();
 
         $attendances = $this->getMonthlyAttendances($user, $month)
-            ->keyBy(function ($attendance) {
-                return $attendance->work_date->format('Y-m-d');
-            });
+            ->keyBy(fn($attendance) => $attendance->work_date->format('Y-m-d'));
 
         $days = [];
         $current = $start->copy();
-        while ($current <= $end) {
+
+        while ($current->lte($end)) {
             $days[] = $current->copy();
             $current->addDay();
         }
@@ -143,12 +142,9 @@ class AdminAttendanceController extends Controller
 
     public function exportCsv(User $user)
     {
-        $month = request('month')
-            ? Carbon::parse(request('month'))
-            : now();
-
-        $start = $month->copy()->startOfMonth();
-        $end = $month->copy()->endOfMonth();
+        $month = request()->filled('month')
+            ? Carbon::createFromFormat('Y-m-d', request('month') . '-01')
+            : now()->startOfMonth();
 
         $attendances = $this->getMonthlyAttendances($user, $month);
 
@@ -164,11 +160,10 @@ class AdminAttendanceController extends Controller
                     '出勤',
                     '退勤',
                     '休憩',
-                    '合計'
+                    '合計',
                 ]);
 
                 foreach ($attendances as $attendance) {
-
                     fputcsv($handle, [
                         $attendance->work_date->format('Y/m/d'),
                         optional($attendance->clock_in)->format('H:i'),
@@ -184,7 +179,7 @@ class AdminAttendanceController extends Controller
         );
     }
 
-    //指定ユーザー・指定月の勤怠一覧を取得
+    // 指定ユーザー・指定月の勤怠一覧を取得
     private function getMonthlyAttendances(User $user, Carbon $month)
     {
         return Attendance::with('breaks')

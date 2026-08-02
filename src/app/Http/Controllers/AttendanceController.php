@@ -99,9 +99,9 @@ class AttendanceController extends Controller
 
     public function list(Request $request)
     {
-        $currentMonth = $request->query('month')
-            ? Carbon::parse($request->query('month'))
-            : Carbon::now();
+        $currentMonth = $request->filled('month')
+            ? Carbon::createFromFormat('Y-m-d', $request->month . '-01')
+            : now()->startOfMonth();
 
         $days = collect();
 
@@ -162,7 +162,7 @@ class AttendanceController extends Controller
 
         foreach ($validated['breaks'] as $index => $break) {
 
-            // 両方とも空なら何もしない
+            // 両方とも空白なら何もしない
             if (empty($break['break_start']) && empty($break['break_end'])) {
                 continue;
             }

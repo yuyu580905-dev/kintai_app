@@ -116,6 +116,8 @@ class AdminAttendanceTest extends TestCase
     // 「前日」を押下すると、前の日の勤怠情報が表示されることを確認するテスト
     public function test_previous_day_attendance_is_displayed(): void
     {
+        Carbon::setTestNow('2026-07-16');
+
         /** @var User $admin */
         $admin = User::factory()->create([
             'admin_status' => true,
@@ -141,11 +143,15 @@ class AdminAttendanceTest extends TestCase
             ->assertStatus(200)
             ->assertSee('2026/07/15')
             ->assertSee('山田太郎');
+
+        Carbon::setTestNow();
     }
 
     // 「翌日」を押下すると、次の日の勤怠情報が表示されることを確認するテスト
     public function test_next_day_attendance_is_displayed(): void
     {
+        Carbon::setTestNow('2026-07-16');
+
         /** @var User $admin */
         $admin = User::factory()->create([
             'admin_status' => true,
@@ -171,6 +177,45 @@ class AdminAttendanceTest extends TestCase
             ->assertStatus(200)
             ->assertSee('2026/07/17')
             ->assertSee('山田太郎');
+
+        Carbon::setTestNow();
+    }
+
+    // 勤怠詳細画面に表示されるデータが選択したものになっていることを確認するテスト
+    public function test_attendance_detail_displays_selected_attendance(): void
+    {
+        /** @var User $admin */
+        $admin = User::factory()->create([
+            'admin_status' => true,
+        ]);
+
+        /** @var User $user */
+        $user = User::factory()->create([
+            'name' => '山田太郎',
+        ]);
+
+        $attendance = Attendance::create([
+            'user_id' => $user->id,
+            'work_date' => '2026-07-16',
+            'clock_in' => '2026-07-16 09:00:00',
+            'clock_out' => '2026-07-16 18:00:00',
+        ]);
+
+        AttendanceBreak::create([
+            'attendance_id' => $attendance->id,
+            'break_start' => '2026-07-16 12:00:00',
+            'break_end' => '2026-07-16 13:00:00',
+        ]);
+
+        $this->actingAs($admin);
+
+        $this->get(route('admin.attendance.detail', $attendance))
+            ->assertStatus(200)
+            ->assertSee('山田太郎')
+            ->assertSee('09:00')
+            ->assertSee('18:00')
+            ->assertSee('12:00')
+            ->assertSee('13:00');
     }
 
     // 出勤時間が退勤時間より後の場合、エラーメッセージが表示されることを確認するテスト
