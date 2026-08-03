@@ -32,60 +32,10 @@
 
 ## 環境構築
 
-**Dockerビルド**
-
 1. `git clone git@github.com:yuyu580905-dev/kintai_app.git`
 2. DockerDesktopアプリを立ち上げる
 3. `cd kintai_app/`
-4. `docker-compose up -d --build`
-
-**Laravel環境構築**
-
-1. `docker-compose exec php bash`
-2. `composer install`
-3. .env.example をコピーして .env を作成
-
-```bash
-cp .env.example .env
-```
-
-4. .envに以下の環境変数を設定
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=laravel_db
-DB_USERNAME=laravel_user
-DB_PASSWORD=laravel_pass
-
-MAIL_MAILER=smtp
-MAIL_HOST=sandbox.smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=your_mailtrap_username
-MAIL_PASSWORD=your_mailtrap_password
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=test@example.com
-MAIL_FROM_NAME="${APP_NAME}"
-```
-
-5. アプリケーションキーの作成
-
-```bash
-php artisan key:generate
-```
-
-6. マイグレーションの実行
-
-```bash
-php artisan migrate
-```
-
-7. シーディングの実行
-
-```bash
-php artisan db:seed
-```
+4. `make init`
 
 ## メール認証について
 
@@ -95,19 +45,8 @@ php artisan db:seed
 
 1. [Mailtrap](https://mailtrap.io/) に登録
 2. Sandbox を作成
-3. SMTP情報を取得
-4. .env に設定
-
-```env
-MAIL_MAILER=smtp
-MAIL_HOST=sandbox.smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=your_mailtrap_username
-MAIL_PASSWORD=your_mailtrap_password
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=test@example.com
-MAIL_FROM_NAME="${APP_NAME}"
-```
+3. Sandbox のIntegrationから 「laravel 7.x and 8.x」を選択し、　<br>
+   .envファイルのMAIL_MAILERからMAIL_ENCRYPTIONまでの項目をコピー＆ペーストしてください。
 
 設定後、以下を実行してください
 
@@ -119,11 +58,11 @@ php artisan config:clear
 
 シーディング実行後、以下のユーザーでログインできます。
 
-| 種別         | メールアドレス    | パスワード |
-| ------------ | ----------------- | ---------- |
-| 一般ユーザー | user1@example.com | password   |
-| 一般ユーザー | user2@example.com | password   |
-| 管理者       | user3@example.com | password   |
+| 種別          | メールアドレス    | パスワード |
+| ------------- | ----------------- | ---------- |
+| 一般ユーザー1 | user1@example.com | password   |
+| 一般ユーザー2 | user2@example.com | password   |
+| 管理者        | user3@example.com | password   |
 
 ※管理者ユーザーは `admin_status = true` が設定されています。<br>
 ※すべてメール認証済みです。
