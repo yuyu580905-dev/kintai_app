@@ -137,8 +137,16 @@ class AdminAttendanceTest extends TestCase
 
         $this->actingAs($admin);
 
+        $response = $this->get(route('admin.attendance.list'));
+
+        $response->assertSee(
+            route('admin.attendance.list', [
+                'date' => '2026-07-15'
+            ])
+        );
+
         $this->get(route('admin.attendance.list', [
-            'date' => '2026-07-15',
+            'date' => '2026-07-15'
         ]))
             ->assertStatus(200)
             ->assertSee('2026/07/15')
@@ -171,8 +179,16 @@ class AdminAttendanceTest extends TestCase
 
         $this->actingAs($admin);
 
+        $response = $this->get(route('admin.attendance.list'));
+
+        $response->assertSee(
+            route('admin.attendance.list', [
+                'date' => '2026-07-17'
+            ])
+        );
+
         $this->get(route('admin.attendance.list', [
-            'date' => '2026-07-17',
+            'date' => '2026-07-17'
         ]))
             ->assertStatus(200)
             ->assertSee('2026/07/17')

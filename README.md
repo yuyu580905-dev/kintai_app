@@ -1,5 +1,35 @@
 # kintai_app（新模擬案件\_勤怠管理アプリ）
 
+## アプリ概要
+
+勤怠管理アプリです。
+
+### 主な機能
+
+- 会員登録
+- ログイン
+- メール認証
+- 出勤・退勤・休憩
+- 勤怠一覧
+- 勤怠修正申請
+- 管理者承認
+- スタッフ一覧
+- 勤怠レポート
+- 公開API
+
+## 使用技術（実行環境）
+
+- PHP 8.1
+- Laravel 8.83.29
+- MySQL 8.0
+- Nginx
+- Docker
+- Docker Compose
+
+## ER図
+
+![ER図](src/er-diagram.png)
+
 ## 環境構築
 
 **Dockerビルド**
@@ -37,9 +67,6 @@ MAIL_PASSWORD=your_mailtrap_password
 MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=test@example.com
 MAIL_FROM_NAME="${APP_NAME}"
-
-STRIPE_KEY=your_stripe_publishable_key
-STRIPE_SECRET=your_stripe_secret_key
 ```
 
 5. アプリケーションキーの作成
@@ -66,10 +93,10 @@ php artisan db:seed
 
 ### Mailtrap設定
 
-1. Mailtrapに登録
-2. Sandboxを作成
+1. [Mailtrap](https://mailtrap.io/) に登録
+2. Sandbox を作成
 3. SMTP情報を取得
-4. .envへ以下を設定
+4. .env に設定
 
 ```env
 MAIL_MAILER=smtp
@@ -87,6 +114,40 @@ MAIL_FROM_NAME="${APP_NAME}"
 ```bash
 php artisan config:clear
 ```
+
+## テストアカウント
+
+シーディング実行後、以下のユーザーでログインできます。
+
+| 種別         | メールアドレス    | パスワード |
+| ------------ | ----------------- | ---------- |
+| 一般ユーザー | user1@example.com | password   |
+| 一般ユーザー | user2@example.com | password   |
+| 管理者       | user3@example.com | password   |
+
+※管理者ユーザーは `admin_status = true` が設定されています。<br>
+※すべてメール認証済みです。
+
+## API
+
+本アプリでは公開APIも実装しています。
+
+### エンドポイント
+
+| Method | URL                             | 概要         |
+| ------ | ------------------------------- | ------------ |
+| GET    | /api/v1/attendance-records      | 勤怠一覧取得 |
+| GET    | /api/v1/attendance-records/{id} | 勤怠詳細取得 |
+| POST   | /api/v1/attendance-records      | 勤怠登録     |
+| PUT    | /api/v1/attendance-records/{id} | 勤怠更新     |
+| DELETE | /api/v1/attendance-records/{id} | 勤怠削除     |
+
+※ {id} は勤怠レコードのIDを表します。
+
+### 認証
+
+- GETは認証不要
+- POST / PUT / DELETE は Laravel Sanctum による認証が必要
 
 ## テスト
 
@@ -181,19 +242,6 @@ php artisan migrate --env=testing
 ```bash
 php artisan test
 ```
-
-## 使用技術（実行環境）
-
-- PHP8.1
-- Laravel8.83.29
-- MySQL8.0
-- Nginx
-- Docker
-- Docker Compose
-
-## ER図
-
-![ER図](src/er-diagram.png)
 
 ## URL
 
