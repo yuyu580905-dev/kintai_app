@@ -45,7 +45,7 @@
 
 1. [Mailtrap](https://mailtrap.io/) に登録
 2. Sandbox を作成
-3. Sandbox のIntegrationから 「laravel 7.x and 8.x」を選択し、　<br>
+3. Sandbox の Integration から「laravel 7.x and 8.x」を選択し、<br>
    .envファイルのMAIL_MAILERからMAIL_ENCRYPTIONまでの項目をコピー＆ペーストしてください。
 
 設定後、以下を実行してください
