@@ -28,8 +28,6 @@
                 {{ $currentMonth->format('Y/m') }}
             </div>
 
-
-
             <a href="{{ route('attendance.list', ['month' => $currentMonth->copy()->addMonth()->format('Y-m')]) }}"
                 class="attendance-list__date-link">
                 <span>翌月</span>
